@@ -77,38 +77,10 @@ public class GeneradorReferencias {
 		for (int i = 0; i<nf;i++) {
 			for (int j = 0; j <nc;j++) {
 				System.out.println("[A-" + i + "-" + j + "]," + matrizA[i][j][0] + "," + matrizA[i][j][1]);
-			}
-		}
-		
-		for (int i = 0; i<nf;i++) {
-			for (int j = 0; j <nc;j++) {
 				System.out.println("[B-" + i + "-" + j + "]," + matrizB[i][j][0] + "," + matrizB[i][j][1]);
-			}
-		}
-		
-		for (int i = 0; i<nf;i++) {
-			for (int j = 0; j <nc;j++) {
 				System.out.println("[C-" + i + "-" + j + "]," + matrizC[i][j][0] + "," + matrizC[i][j][1]);
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		
-		
-		
-		int numRows = 8;
-		int numCols = 8;
-		int pageSize = 256;			;
-		int intSize = 4;
-		int mpCualquiera = 0;
-		
-		Proceso proceso = new Proceso(numRows,numCols,intSize,pageSize,mpCualquiera);
-		GeneradorReferencias generadorReferencias = new GeneradorReferencias(proceso);
-		
-		
-		generadorReferencias.imprimirReferencias();
-		
 	}
 
 
