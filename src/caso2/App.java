@@ -74,7 +74,7 @@ public class App {
        
        int opcion;
        do {
-           System.out.println("===== MENÃš =====");
+           System.out.println("===== MENU =====");
            System.out.println("SELECCIONA UN MODO PARA EL PROGRAMA");
            System.out.println("1. Modo 1 - Comportamiento del proceso");
            System.out.println("2. Modo 2 - Comportamiento del sistema de paginaciÃ³n");
@@ -104,8 +104,21 @@ public class App {
                }
                break;
                case 2:
-                   System.out.println("AquÃ­ va el modo 2");
+                   System.out.println("======== INICIO MODO 2 ========");
+            	   System.out.println("Ingrese el número de marcos de página para la ram: ");
+            	   int mp2 = leerEnteroDesdeConsola();
+            	   
+                   Actualizador actualizador = new Actualizador(mp2);
+                   actualizador.start();
+                   
+                   while(!actualizador.getMemoriaReal().completa()) {
+                	   System.out.println("La RAM todavía no está llena");
+                   }
+                   
+                   Matriz matriz = new Matriz(actualizador.getMemoriaReal());
+                   matriz.run();
                    break;
+                   
                case 3:
                    System.out.println("Saliendo...");
                    System.exit(0);
