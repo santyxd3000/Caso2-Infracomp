@@ -1,11 +1,11 @@
 package caso2;
 
 public class Proceso{
-	private int nf;
-	private int nc;
-	private int te;
-	private int tp;
-	private int mp;
+	private int nf; // Número de filas
+	private int nc; // Número de columnas
+	private int te; // Tamaño del entero
+	private int tp; // Tamaño de página
+	private int mp; // Número de marcos de página
 	
 	public Proceso(int nf, int nc, int te, int tp, int mp) {
 		this.nf = nf;
@@ -15,6 +15,8 @@ public class Proceso{
 		this.mp = mp;
 		
 	}
+	
+	//Todos los métodos getter y setter para cada atributo
 
 	public int getNf() {
 		return nf;
