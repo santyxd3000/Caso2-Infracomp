@@ -63,13 +63,4 @@ public class MemoriaReal {
 		return this.completa;
 	}
 	
-	
-	public static void main(String[] args) {
-		
-		MemoriaVirtual mem = new MemoriaVirtual();
-		MemoriaReal memo = new MemoriaReal(3);
-		memo.llenarRam(mem);
-		
-		memo.actualizarPaginaRam(1, 2, mem);
-	}
 }

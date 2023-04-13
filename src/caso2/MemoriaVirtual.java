@@ -69,10 +69,5 @@ public class MemoriaVirtual {
 	public void agregarPagina(int indice, ArrayList pagina) {
 		this.memoria[indice] = pagina;
 	}
-	
-	
-	public static void main(String[] args) {
-		
-		//MemoriaVirtual mem = new MemoriaVirtual();
-	}
+
 }
