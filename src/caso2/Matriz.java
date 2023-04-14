@@ -27,6 +27,8 @@ public class Matriz extends Thread {
 			
 			while(sc.hasNextLine()) {
 				
+				sleep(2);
+				
 				String lineaMatrizA = sc.nextLine();
 				String[] listaMatrizA = lineaMatrizA.split(",");
 				
@@ -40,15 +42,15 @@ public class Matriz extends Thread {
 				int paginaB = Integer.parseInt(listaMatrizB[1]);
 				int paginaC = Integer.parseInt(listaMatrizC[1]);
 				
-				if(!memReal.getRam()[paginaA].contains(listaMatrizA[0])) {
+				if(memReal.getRam()[paginaA] == null || !memReal.getRam()[paginaA].contains(listaMatrizA[0])) {
 					//FALLO
 				} 
 				
-				if(!memReal.getRam()[paginaB].contains(listaMatrizB[0])) {
+				if(memReal.getRam()[paginaB] == null || !memReal.getRam()[paginaB].contains(listaMatrizB[0])) {
 					//FALLO
 				} 
 				
-				if(!memReal.getRam()[paginaC].contains(listaMatrizC[0])) {
+				if(memReal.getRam()[paginaC] == null || !memReal.getRam()[paginaC].contains(listaMatrizC[0])) {
 					//FALLO
 				} 
 			}

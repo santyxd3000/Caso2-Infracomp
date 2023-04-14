@@ -105,17 +105,11 @@ public class App {
                break;
                case 2:
                    System.out.println("======== INICIO MODO 2 ========");
-            	   System.out.println("Ingrese el número de marcos de página para la ram: ");
-            	   int mp2 = leerEnteroDesdeConsola();
-            	   
-                   Actualizador actualizador = new Actualizador(mp2);
-                   actualizador.start();
                    
-                   while(!actualizador.getMemoriaReal().completa()) {
-                	   System.out.println("La RAM todavía no está llena");
-                   }
+                   MemoriaVirtual memVirtual = new MemoriaVirtual();
+                   MemoriaReal memReal = new MemoriaReal(mp, memVirtual.getTablaPagina(), memVirtual);
                    
-                   Matriz matriz = new Matriz(actualizador.getMemoriaReal());
+                   Matriz matriz = new Matriz(memReal);
                    matriz.run();
                    break;
                    

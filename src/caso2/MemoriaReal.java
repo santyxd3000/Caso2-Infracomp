@@ -7,60 +7,45 @@ import java.util.ArrayList;
 public class MemoriaReal {
 
 	private ArrayList[] ram;
-	private int numMarcos;
-	private boolean completa = false;
+	private TablaPagina tablaPag;
+	private MemoriaVirtual memVirtual;
 	
 	
-	public MemoriaReal(int numMarcos) {
+	public MemoriaReal(int numMarcos, TablaPagina tablaPag, MemoriaVirtual memVirtual) {
 		
 		this.ram = new ArrayList[numMarcos];
-		this.numMarcos = numMarcos;
+		this.tablaPag = tablaPag;
+		this.memVirtual = memVirtual;
 	}
+	
 	
 	public ArrayList[] getRam() {
 		return this.ram;
 	}
 	
-	public synchronized void llenarRam(MemoriaVirtual memoriaVirtual) {
+	public synchronized void actualizarPaginaRam(int paginaAgregar, int paginaQuitar) {
 		
-		for(int i=0; i<numMarcos; i++) {
-			
-			ArrayList pagina = memoriaVirtual.getMemoria()[i];
-			ram[i] = pagina;
-			memoriaVirtual.getTablaPagina().darTablaPagina()[i] = i;
-			memoriaVirtual.eliminarPagina(i);
-		}
-		this.completa = true;
-	}
-	
-	public synchronized void actualizarPaginaRam(int indiceAgregar, int indiceQuitar, MemoriaVirtual memoriaVirtual) {
-		
-		int indiceRam = memoriaVirtual.getTablaPagina().darIndicePagina(indiceQuitar);
+		int indiceRam = tablaPag.darIndicePagina(paginaQuitar);
 		
 		if(indiceRam != -1) {
-			eliminarPaginaRam(indiceRam, indiceQuitar, memoriaVirtual);
-			agregarPaginaRam(indiceRam, indiceAgregar, memoriaVirtual);
+			eliminarPaginaRam(paginaQuitar);
+			agregarPaginaRam(paginaAgregar);
 		}
 	}
 	
-	private synchronized void eliminarPaginaRam(int indiceRam, int indice, MemoriaVirtual memoriaVirtual) {
+	public synchronized void eliminarPaginaRam(int paginaQuitar) {
 		
-		ArrayList pagina = ram[indiceRam];
-		memoriaVirtual.agregarPagina(indice, pagina);
-		memoriaVirtual.getTablaPagina().actualizarTabla(indice, -1);
+		int indiceRam = tablaPag.darIndicePagina(paginaQuitar);
+		tablaPag.actualizarTabla(paginaQuitar, -1);
 		ram[indiceRam] = null;
 	}
 	
-	private synchronized void agregarPaginaRam(int indiceRam, int indice, MemoriaVirtual memoriaVirtual) {
+	public synchronized void agregarPaginaRam(int paginaAgregar) {
 		
-		ArrayList pagina = memoriaVirtual.getMemoria()[indice];
+		int indiceRam = tablaPag.darIndicePagina(paginaAgregar);
+		ArrayList pagina = memVirtual.getMemoria()[paginaAgregar];
 		ram[indiceRam] = pagina;
-		memoriaVirtual.getTablaPagina().actualizarTabla(indice, indiceRam);
-	}
-	
-	
-	public boolean completa() {
-		return this.completa;
+		tablaPag.actualizarTabla(paginaAgregar, indiceRam);
 	}
 	
 }

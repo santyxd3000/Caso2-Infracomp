@@ -18,7 +18,6 @@ public class MemoriaVirtual {
 			InputStream ins = new FileInputStream("src/caso2/referencias.txt");
 			Scanner sc = new Scanner(ins);
 			
-			//int tp = Integer.parseInt(sc.nextLine().substring(3));
 			sc.nextLine();
 			int nf = Integer.parseInt(sc.nextLine().substring(3));
 			int nc = Integer.parseInt(sc.nextLine().substring(3));
@@ -59,15 +58,6 @@ public class MemoriaVirtual {
 	
 	public TablaPagina getTablaPagina() {
 		return this.tablaPagina;
-	}
-	
-	
-	public void eliminarPagina(int indice) {
-		this.memoria[indice] = null;
-	}
-
-	public void agregarPagina(int indice, ArrayList pagina) {
-		this.memoria[indice] = pagina;
 	}
 
 }
