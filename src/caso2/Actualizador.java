@@ -12,7 +12,7 @@ public class Actualizador extends Thread{
     private Integer poner = -1;
     private int borra;
     private boolean activo = true;
-    private int menor = 1;
+    private Long menor = 1L;
 
     public void setActivo(){
         this.activo = false;
@@ -29,12 +29,12 @@ public class Actualizador extends Thread{
     
 
     public int getBorrar(MemoriaReal memReal){
-        HashMap<Integer, Integer> bytes = memReal.getBytesAsociados();
+        HashMap<Integer, Long> bytes = memReal.getBytesAsociados();
         //System.out.println(bytes + "bytes");
-        Collection<Integer> valores = bytes.values();
+        Collection<Long> valores = bytes.values();
         int pos=0;
         int i = 0;
-        for (Integer valor : valores) {
+        for (Long valor : valores) {
             if (i == 0){
                 menor = valor;
             }

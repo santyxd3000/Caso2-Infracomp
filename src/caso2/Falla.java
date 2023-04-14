@@ -20,9 +20,9 @@ public class Falla extends Thread {
 
     public void LRU() {
 
-        HashMap<Integer, Integer> bytes = memReal.getBytesAsociados();
+        HashMap<Integer, Long> bytes = memReal.getBytesAsociados();
         for (int i = 0; i < bytes.size(); i++) {
-            int valor = bytes.get(i);
+            long valor = bytes.get(i);
             valor = valor/10;
             bytes.put(i, valor);
 
@@ -32,12 +32,12 @@ public class Falla extends Thread {
 
     public void resetLRU(int posicion){
 
-        HashMap<Integer, Integer> bytes = memReal.getBytesAsociados();
-        int valori = bytes.get(posicion);
-        valori = valori + 10000000;
-        bytes.put(posicion, valori);
+        HashMap<Integer, Long> bytes = memReal.getBytesAsociados();
+        long valori = bytes.get(posicion);
+        long valorl = valori + 10000000000000L;
+        bytes.put(posicion, valorl);
         fallas = fallas + 1;
-        //System.out.println("Fallas: " + fallas);
+        System.out.println("Fallas: " + fallas);
 
 
     }

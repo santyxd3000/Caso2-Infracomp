@@ -1,1 +1,1 @@
-Fallas: 3
+Fallas: 24

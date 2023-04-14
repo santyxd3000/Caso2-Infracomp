@@ -11,7 +11,7 @@ public class MemoriaReal {
 	private TablaPagina tablaPag;
 	private MemoriaVirtual memVirtual;
 	private int numMarcos;
-	private HashMap <Integer, Integer> bytesAsociados;
+	private HashMap <Integer, Long> bytesAsociados;
 	
 	
 	public MemoriaReal(int numMarcos, TablaPagina tablaPag, MemoriaVirtual memVirtual) {
@@ -23,9 +23,9 @@ public class MemoriaReal {
 		this.tablaPag = tablaPag;
 		this.memVirtual = memVirtual;
 		this.numMarcos = numMarcos;
-		this.bytesAsociados = new HashMap<Integer, Integer>();
+		this.bytesAsociados = new HashMap<Integer, Long>();
 		for (int i = 0; i < numMarcos; i++) {
-			bytesAsociados.put(i, 0);
+			bytesAsociados.put(i, (long)0);
 		}
 
 		
@@ -60,11 +60,11 @@ public class MemoriaReal {
 	// 	ram[indiceRam] = pagina;
 	// 	tablaPag.actualizarTabla(paginaAgregar, indiceRam);
 
-	public synchronized HashMap<Integer, Integer> getBytesAsociados() {
+	public synchronized HashMap<Integer, Long> getBytesAsociados() {
 		return bytesAsociados;
 	}
 
-	public synchronized void setBytesAsociados(HashMap<Integer, Integer> bytesAsociados) {
+	public synchronized void setBytesAsociados(HashMap<Integer, Long> bytesAsociados) {
 		this.bytesAsociados = bytesAsociados;
 	}
 		
