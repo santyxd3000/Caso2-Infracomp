@@ -121,6 +121,18 @@ public class App {
                    falla.start();
                    actualizador.start();
                    matriz.iniciar();
+
+                   PrintStream consoleOut = System.out; 
+                   FileOutputStream fileOut = new FileOutputStream("src/caso2/salida2.txt"); 
+                   PrintStream fileStream = new PrintStream(fileOut);
+                   System.setOut(fileStream); 
+
+                   System.out.println("Fallas: " + falla.getFallas());
+
+                   System.setOut(consoleOut); 
+                   fileStream.close();
+                   fileOut.close();
+                   System.out.println("Imprimiendo fallas...");
                    break;
                    
                case 3:

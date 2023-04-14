@@ -37,9 +37,13 @@ public class Falla extends Thread {
         valori = valori + 10000000;
         bytes.put(posicion, valori);
         fallas = fallas + 1;
-        System.out.println("Fallas: " + fallas);
+        //System.out.println("Fallas: " + fallas);
 
 
+    }
+
+    public int getFallas() {
+        return fallas;
     }
 
     public void run() {

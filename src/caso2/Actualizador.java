@@ -26,6 +26,7 @@ public class Actualizador extends Thread{
         this.memVirtual = memVirtual;
 
     }
+    
 
     public int getBorrar(MemoriaReal memReal){
         HashMap<Integer, Integer> bytes = memReal.getBytesAsociados();
