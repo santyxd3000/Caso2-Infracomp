@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 public class App {
 	
@@ -31,7 +30,7 @@ public class App {
     
     
     public static void main(String[] args) {
-        String rutaArchivo = "src/caso2/archivo.txt";// Ruta del archivo 
+        String rutaArchivo = "src/caso2/entrada.txt";// Ruta del archivo 
         //Inicializa las variables
         int nf = 0;
         int nc = 0;
@@ -99,6 +98,7 @@ public class App {
                    System.setOut(consoleOut); 
                    fileStream.close();
                    fileOut.close();
+                   System.out.println("======== INICIO MODO 1 ========");
                    System.out.println("Imprimiendo referencias...");
                } catch (IOException e) {
                    e.printStackTrace();
@@ -123,7 +123,7 @@ public class App {
                    matriz.iniciar();
 
                    PrintStream consoleOut = System.out; 
-                   FileOutputStream fileOut = new FileOutputStream("src/caso2/salida2.txt"); 
+                   FileOutputStream fileOut = new FileOutputStream("src/caso2/fallas.txt"); 
                    PrintStream fileStream = new PrintStream(fileOut);
                    System.setOut(fileStream); 
 
