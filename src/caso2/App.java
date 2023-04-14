@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class App {
 	
@@ -107,10 +108,18 @@ public class App {
                    System.out.println("======== INICIO MODO 2 ========");
                    
                    MemoriaVirtual memVirtual = new MemoriaVirtual();
-                   MemoriaReal memReal = new MemoriaReal(mp, memVirtual.getTablaPagina(), memVirtual);
                    
-                   Matriz matriz = new Matriz(memReal);
-                   matriz.run();
+
+                   MemoriaReal memReal = new MemoriaReal(mp, memVirtual.getTablaPagina(), memVirtual);
+                   Falla falla = new Falla(memReal);
+                   Actualizador actualizador = new Actualizador(memReal, memVirtual.getTablaPagina(), falla, memVirtual);
+        
+                   Matriz matriz = new Matriz(memReal, actualizador, falla);
+                   
+                   
+                   falla.start();
+                   actualizador.start();
+                   matriz.iniciar();
                    break;
                    
                case 3:

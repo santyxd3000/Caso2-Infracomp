@@ -3,6 +3,11 @@ package caso2;
 
 public class GeneradorReferencias {
 	private Proceso proceso; //pide un proceso de la clase Proceso
+	private int nr;
+
+	public int getNr() {
+		return nr;
+	}
 	
 	public GeneradorReferencias(Proceso proceso) {
 		this.proceso = proceso;

@@ -2,19 +2,29 @@ package caso2;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class Matriz extends Thread {
+public class Matriz {
 
 	private MemoriaReal memReal;
+	private HashMap <Integer, Integer> ram;
+	private int nr;
+	boolean contiene;
+	private int necesita;
+	private Actualizador actualizador;
+	private Falla falla;
 	
 	
-	public Matriz (MemoriaReal memReal) {
+	public Matriz (MemoriaReal memReal, Actualizador actualizador, Falla falla) {
 		
 		this.memReal = memReal;
+		this.actualizador = actualizador;
+		this.falla = falla;
 	}
 	
-	public void run() {
+	public void iniciar() {
 		
 		try {
 			InputStream ins = new FileInputStream("src/caso2/referencias.txt");
@@ -23,42 +33,58 @@ public class Matriz extends Thread {
 			sc.nextLine();
 			sc.nextLine();
 			sc.nextLine();
-			sc.nextLine();
-			
-			while(sc.hasNextLine()) {
+			String linea = sc.nextLine();
+
+			String[] partes = linea.split("=");
+            nr = Integer.parseInt(partes[1]);
+
+			ram = memReal.getRam();
+			int i = 0;
+			while (i < nr) {
 				
-				sleep(2);
 				
-				String lineaMatrizA = sc.nextLine();
-				String[] listaMatrizA = lineaMatrizA.split(",");
 				
-				String lineaMatrizB = sc.nextLine();
-				String[] listaMatrizB = lineaMatrizB.split(",");
+				String lineaMatrizA = sc.nextLine(); //lee la linea
+				String[] listaMatrizA = lineaMatrizA.split(","); //separa la linea en una lista
+				int paginaA = Integer.parseInt(listaMatrizA[1]);  //toma el numero de pagina
+
+				Collection<Integer> valores = ram.values();//se obtienen los valores de la ram
+	
+				contiene = cont(valores, paginaA);//se verifica si la pagina esta en la ram
 				
-				String lineaMatrizC = sc.nextLine();
-				String[] listaMatrizC = lineaMatrizC.split(",");
 				
-				int paginaA = Integer.parseInt(listaMatrizA[1]);
-				int paginaB = Integer.parseInt(listaMatrizB[1]);
-				int paginaC = Integer.parseInt(listaMatrizC[1]);
+				while (!contiene) { //no esta en la ram
+					
+					actualizador.setPoner(paginaA); //se pone lo que se necesita
+					contiene = cont(valores, paginaA);//se verifica si la pagina esta en la ram
+
+					//llamar a falla a hacer algo
+				}
+
+
+				i++;
 				
-				if(memReal.getRam()[paginaA] == null || !memReal.getRam()[paginaA].contains(listaMatrizA[0])) {
-					//FALLO
-				} 
+
 				
-				if(memReal.getRam()[paginaB] == null || !memReal.getRam()[paginaB].contains(listaMatrizB[0])) {
-					//FALLO
-				} 
-				
-				if(memReal.getRam()[paginaC] == null || !memReal.getRam()[paginaC].contains(listaMatrizC[0])) {
-					//FALLO
-				} 
 			}
 			
+			
 			sc.close();
+
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+
+		
 	}
+
+	public boolean cont(Collection<Integer> valores, int pag){
+		if (valores.contains(pag)) {
+			return true;
+		}
+		return false;
+	}
+
+
 }
