@@ -25,7 +25,7 @@ public class TablaPagina {
 	}
 	
 	
-	public synchronized void actualizarTabla(int indice, Integer pagina) {
+	public  void actualizarTabla(int indice, Integer pagina) {
 		
 		tablaPag.put(indice, pagina);
 	}

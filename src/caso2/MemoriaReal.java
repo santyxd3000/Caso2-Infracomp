@@ -64,7 +64,7 @@ public class MemoriaReal {
 		return bytesAsociados;
 	}
 
-	public synchronized void setBytesAsociados(HashMap<Integer, Long> bytesAsociados) {
+	public  void setBytesAsociados(HashMap<Integer, Long> bytesAsociados) {
 		this.bytesAsociados = bytesAsociados;
 	}
 		
