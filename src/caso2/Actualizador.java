@@ -30,7 +30,6 @@ public class Actualizador extends Thread{
 
     public int getBorrar(MemoriaReal memReal){
         HashMap<Integer, Long> bytes = memReal.getBytesAsociados();
-        //System.out.println(bytes + "bytes");
         Collection<Long> valores = bytes.values();
         int pos=0;
         int i = 0;
@@ -39,7 +38,6 @@ public class Actualizador extends Thread{
                 menor = valor;
             }
             if (valor < menor) {
-                //System.out.println(110);
                 menor = valor;
                 pos = i;
             }
@@ -66,7 +64,7 @@ public class Actualizador extends Thread{
 
                     int quitar = memReal.getRam().get(borra); //obtiene pagina a borrar
                     memReal.getRam().put(borra, poner); //actualiza ram
-                    //System.out.println(memReal.getRam() + "rma");
+
 
                     tablaPagina.actualizarTabla(poner, borra); //actualiza tabla de paginas
                     tablaPagina.actualizarTabla(quitar, null); //actualiza tabla de paginas
