@@ -36,29 +36,6 @@ public class MemoriaReal {
 		return this.ram;
 	}
 	
-	// public synchronized void actualizarPaginaRam(int paginaAgregar, int paginaQuitar) {
-		
-	// 	int indiceRam = tablaPag.darIndicePagina(paginaQuitar);
-		
-	// 	if(indiceRam != -1) {
-	// 		eliminarPaginaRam(paginaQuitar);
-	// 		agregarPaginaRam(paginaAgregar);
-	// 	}
-	// }
-	
-	// public synchronized void eliminarPaginaRam(int paginaQuitar) {
-		
-	// 	int indiceRam = tablaPag.darIndicePagina(paginaQuitar);
-	// 	tablaPag.actualizarTabla(paginaQuitar, -1);
-	// 	ram[indiceRam] = null;
-	// }
-	
-	// public synchronized void agregarPaginaRam(int paginaAgregar) {
-		
-	// 	int indiceRam = tablaPag.darIndicePagina(paginaAgregar);
-	// 	ArrayList pagina = memVirtual.getMemoria()[paginaAgregar];
-	// 	ram[indiceRam] = pagina;
-	// 	tablaPag.actualizarTabla(paginaAgregar, indiceRam);
 
 	public synchronized HashMap<Integer, Long> getBytesAsociados() {
 		return bytesAsociados;
@@ -68,6 +45,6 @@ public class MemoriaReal {
 		this.bytesAsociados = bytesAsociados;
 	}
 		
-	// }
+	
 	
 }
